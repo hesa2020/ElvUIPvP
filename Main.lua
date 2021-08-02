@@ -18,6 +18,7 @@ P["ElvUIPvP"] = {
 	["SomeRangeOption"] = 5,
 	["DrTracker"] = {
 		["ElvUF_Player"] = {
+			["Enabled"] = true,
 			["Size"] = 60,
 			["Anchor"] = "TOPRIGHT",
 			["AnchorFrame"] = "TOPLEFT",
@@ -26,7 +27,11 @@ P["ElvUIPvP"] = {
 			["Direction"] = "RIGHT",
 			["Spacing"] = 2,
 			["Border"] = 2,
-			["FontSize"] = 30
+			["FontSizeCooldown"] = 30,
+			["FontSizeCategory"] = 30,
+			["ShowCategory"] = true,
+			["ShowCooldown"] = true,
+			["ShowTooltip"] = true
 		}
 	},
 }
@@ -223,8 +228,15 @@ function ElvUIPvP:InsertOptions()
 						childGroups = 'tab',
 						name = "Player",
 						args = {
-							size = {
+							enable = {
 								order = 1,
+								type = 'toggle',
+								name = "Enable",
+								get = function(info) return E.db.ElvUIPvP.DrTracker.ElvUF_Player.Enabled end,
+								set = function(info, value) E.db.ElvUIPvP.DrTracker.ElvUF_Player.Enabled = value; ElvUIPvP:Update() end
+							},
+							size = {
+								order = 2,
 								type = "range",
 								name = "Size",
 								min = 8,
@@ -238,24 +250,9 @@ function ElvUIPvP:InsertOptions()
 									ElvUIPvP:Update() --We changed a setting, call our Update function
 								end,
 							},
-							fontSize = {
-								order = 1,
-								type = "range",
-								name = "Font Size",
-								min = 8,
-								max = 32,
-								step = 1,
-								get = function(info)
-									return E.db.ElvUIPvP.DrTracker.ElvUF_Player.FontSize
-								end,
-								set = function(info, value)
-									E.db.ElvUIPvP.DrTracker.ElvUF_Player.FontSize = value
-									ElvUIPvP:Update() --We changed a setting, call our Update function
-								end,
-							},
 							anchor = {
 								type = 'select',
-								order = 2,
+								order = 4,
 								name = "Anchor Point",
 								values = anchorPoints,
 								get = function(info)
@@ -268,7 +265,7 @@ function ElvUIPvP:InsertOptions()
 							},
 							anchorFrame = {
 								type = 'select',
-								order = 2,
+								order = 5,
 								name = "Anchor Frame",
 								values = anchorPoints,
 								get = function(info)
@@ -280,7 +277,7 @@ function ElvUIPvP:InsertOptions()
 								end
 							},
 							x = {
-								order = 5,
+								order = 6,
 								type = "range",
 								name = "X",
 								min = -100,
@@ -295,7 +292,7 @@ function ElvUIPvP:InsertOptions()
 								end
 							},
 							y = {
-								order = 6,
+								order = 7,
 								type = "range",
 								name = "Y",
 								min = -100,
@@ -311,7 +308,7 @@ function ElvUIPvP:InsertOptions()
 							},
 							directions = {
 								type = 'select',
-								order = 7,
+								order = 8,
 								name = "Direction",
 								values = directions,
 								get = function(info)
@@ -323,7 +320,7 @@ function ElvUIPvP:InsertOptions()
 								end
 							},
 							spacing = {
-								order = 6,
+								order = 9,
 								type = "range",
 								name = "Spacing",
 								min = 0,
@@ -338,7 +335,7 @@ function ElvUIPvP:InsertOptions()
 								end,
 							},
 							border = {
-								order = 6,
+								order = 10,
 								type = "range",
 								name = "Border",
 								min = 1,
@@ -351,7 +348,51 @@ function ElvUIPvP:InsertOptions()
 									E.db.ElvUIPvP.DrTracker.ElvUF_Player.Border = value
 									ElvUIPvP:Update() --We changed a setting, call our Update function
 								end,
-							}
+							},
+							showCooldown = {
+								order = 11,
+								type = 'toggle',
+								name = "Show Cooldown",
+								get = function(info) return E.db.ElvUIPvP.DrTracker.ElvUF_Player.ShowCooldown end,
+								set = function(info, value) E.db.ElvUIPvP.DrTracker.ElvUF_Player.ShowCooldown = value; ElvUIPvP:Update() end
+							},
+							fontSizeCooldown = {
+								order = 12,
+								type = "range",
+								name = "Cooldown Font Size",
+								min = 8,
+								max = 32,
+								step = 1,
+								get = function(info)
+									return E.db.ElvUIPvP.DrTracker.ElvUF_Player.FontSizeCooldown
+								end,
+								set = function(info, value)
+									E.db.ElvUIPvP.DrTracker.ElvUF_Player.FontSizeCooldown = value
+									ElvUIPvP:Update() --We changed a setting, call our Update function
+								end,
+							},
+							showCategory = {
+								order = 11,
+								type = 'toggle',
+								name = "Show Category",
+								get = function(info) return E.db.ElvUIPvP.DrTracker.ElvUF_Player.ShowCategory end,
+								set = function(info, value) E.db.ElvUIPvP.DrTracker.ElvUF_Player.ShowCategory = value; ElvUIPvP:Update() end
+							},
+							fontSizeCategory = {
+								order = 12,
+								type = "range",
+								name = "Category Font Size",
+								min = 8,
+								max = 32,
+								step = 1,
+								get = function(info)
+									return E.db.ElvUIPvP.DrTracker.ElvUF_Player.FontSizeCategory
+								end,
+								set = function(info, value)
+									E.db.ElvUIPvP.DrTracker.ElvUF_Player.FontSizeCategory = value
+									ElvUIPvP:Update() --We changed a setting, call our Update function
+								end,
+							},
 						},
 					},
 				},

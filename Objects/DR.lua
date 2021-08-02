@@ -101,7 +101,7 @@ function ElvUIPvPFrame.Objects.DR.New(playerButton, frameName)
 
 			drFrame.ApplyDrFrameSettings = function(self)
 				self.Cooldown:ApplyCooldownSettings(true, false, false)
-				self.Cooldown.Text:ApplyFontStringSettings(E.db.ElvUIPvP.DrTracker[drFrame.Container.frameName].FontSize, "OUTLINE", false, {0, 0, 0, 1})
+				self.Cooldown.Text:ApplyFontStringSettings(E.db.ElvUIPvP.DrTracker[drFrame.Container.frameName].FontSizeCooldown, "OUTLINE", false, {0, 0, 0, 1})
 
 			end
 
