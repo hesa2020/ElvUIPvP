@@ -1,4 +1,22 @@
-## Interface: 70200
+## Interface: 90005
+## Interface-Retail: 90005
+## Interface-Classic: 11307
+## Interface-BCC: 20501
+
+#@version-retail@
+## X-Expansion: 1
+#@end-version-retail@
+
+#@version-classic@
+## X-Expansion: 2
+#@end-version-classic@
+
+#@version-bcc@
+## X-Expansion: 5
+#@end-version-bcc@
+
+## Version: @project-version@
+
 ## Author: Hesa
 ## Version: 0.1
 ## Title: |cff1784d1ElvUI|r |cff00b3ffPvPEnhancer|r

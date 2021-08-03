@@ -33,15 +33,15 @@ do
     NS.IS_CLASSIC = isClassic
     NS.IS_CLASSIC_OR_TBC = isClassic or isTBC
 
-    local alert = _G.message or _G.print
-    local tocExp = tonumber(GetAddOnMetadata("ElvUIPvP", "X-Expansion"))
-    if isClassic and tocExp ~= 2 then
-        alert(format("Error: You're currently using the %s version of ElvUIPvP on a Classic client. You need to download the Classic version instead.", expansions[tocExp]))
-    elseif isRetail and tocExp ~= 1 then
-        alert(format("Error: You're currently using the %s version of ElvUIPvP on a Retail client. You need to download the Retail version instead.", expansions[tocExp]))
-    elseif isTBC and tocExp ~= 5 then
-        alert(format("Error: You're currently using the %s version of ElvUIPvP on a TBC client. You need to download the TBC version instead.", expansions[tocExp]))
-    end
+    -- local alert = _G.message or _G.print
+    -- local tocExp = tonumber(GetAddOnMetadata("ElvUIPvP", "X-Expansion"))
+    -- if isClassic and tocExp ~= 2 then
+    --     alert(format("Error: You're currently using the %s version of ElvUIPvP on a Classic client. You need to download the Classic version instead.", expansions[tocExp]))
+    -- elseif isRetail and tocExp ~= 1 then
+    --     alert(format("Error: You're currently using the %s version of ElvUIPvP on a Retail client. You need to download the Retail version instead.", expansions[tocExp]))
+    -- elseif isTBC and tocExp ~= 5 then
+    --     alert(format("Error: You're currently using the %s version of ElvUIPvP on a TBC client. You need to download the TBC version instead.", expansions[tocExp]))
+    -- end
 end
 
 -------------------------------------------------------
